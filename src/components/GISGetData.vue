@@ -8,7 +8,7 @@
             <v-btn @click="getGeoJSON" :disabled="isLoading">Получить данные</v-btn>
             <!--indeterminate  Constantly animates, use when loading progress is unknown. -->
             <v-progress-linear v-if="isLoading" :value="progress" indeterminate></v-progress-linear>
-            <GISDataSelect v-if="features.length" :features="features" @selectFeature="selectedFeature = $event">
+            <GISDataSelect v-if="features.length" :features="features" @selectFeature ="selectFeature" >
             </GISDataSelect>
           </v-card-text>
         </v-card>
@@ -22,7 +22,6 @@
         </v-card>
       </v-col>
     </v-row>
-  
   </v-container>
 </template>
 
@@ -49,11 +48,16 @@ export default Vue.extend({
     isSaved: false,
   }),
   methods: {
+    selectFeature(data:any) {
+    console.log('selectFeature', this.selectedFeature)
+    this.selectedFeature = data
+  //  return this.selectedFeature;
+ },
     async getGeoJSON() {
       this.isLoading = true;
       this.progress = 0;
       //сделаем задержку выполнения
-      await Utils.getRandomDelay();
+     // await Utils.getRandomDelay();
       Utils.getDataApi(baseUrl).then((response: any) => {
         this.features = response.features;
         console.log('this.features', this.features)

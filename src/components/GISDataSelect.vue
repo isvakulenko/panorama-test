@@ -7,6 +7,8 @@
     item-text="properties.name"
     item-value="id"
     label="Выбор feature"
+    return-object
+    @change="$emit('selectFeature', selectedFeature)"
   ></v-select>
 </v-row>
   </v-container>
@@ -14,9 +16,9 @@
 <script lang="ts">
 import Vue from 'vue';
 export default Vue.extend({
-  data: () => ({
-    selectedFeature: null,
-  }),
+  data () {
+    return {selectedFeature: null}
+  },
   props: {
     features: {
       type: Array,
@@ -24,11 +26,7 @@ export default Vue.extend({
     },
   },
   methods: {
-    selectFeature() {
-    
-       console.log('selectFeature', this.selectedFeature)
-      return this.selectedFeature;
-    },
+
   },
 });
 </script>
