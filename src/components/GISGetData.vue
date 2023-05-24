@@ -4,7 +4,7 @@
     <v-row>
       <v-col cols="12" md="6">
         <v-card>
-          <v-card-title>Информация объекте</v-card-title>
+          <v-card-title>Информация об объекте</v-card-title>
           <v-card-text>
             <v-btn @click="getGeoJSON" :disabled="isLoading">Получить данные</v-btn>
             <br>
