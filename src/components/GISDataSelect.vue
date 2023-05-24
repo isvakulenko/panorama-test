@@ -25,9 +25,6 @@ export default Vue.extend({
       default: [],
     },
   },
-  methods: {
-
-  },
 });
 </script>
 
