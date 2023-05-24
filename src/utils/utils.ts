@@ -7,14 +7,18 @@ export class Utils {
     return area.toFixed(2);
   }
 
+  static getRandomNumber():number {
+    const delay = Math.floor(Math.random() * (10000 - 7000)) + 7000;
+    return delay
+  }
+
   //получение случайного значения задержки в интервале 7-10 секунд.
   static getRandomDelay(): Promise<null> {
-    const delay = Math.floor(Math.random() * (10000 - 7000)) + 7000;
-    console.log (delay)
+    const delay = this.getRandomNumber()
+    //console.log (delay) 
     return  new Promise((resolve) => {
       setTimeout(() => {
         resolve(null);
-        console.log (delay)
       }, delay);
     });
   }
@@ -32,3 +36,4 @@ export class Utils {
   };
 
 }
+
