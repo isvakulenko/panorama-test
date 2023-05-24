@@ -8,10 +8,11 @@
             <v-btn @click="getGeoJSON" :disabled="isLoading">Получить данные</v-btn>
             <br>
             <!--indeterminate  Constantly animates, use when loading progress is unknown. -->
-            <v-progress-linear v-if="isLoading" v-model="progress" indeterminate  height="25">   <template v-slot:default="{ value }">
-        <strong>{{ Math.ceil(value) }}%</strong>
-      </template></v-progress-linear>
-      <br>
+            <v-progress-linear v-if="isLoading" v-model="progress" indeterminate height="25"> <template
+                v-slot:default="{ value }">
+                <strong>{{ Math.ceil(value) }}%</strong>
+              </template></v-progress-linear>
+            <br>
             <GISDataSelect v-if="features.length" :features="features" @selectFeature="selectFeature">
             </GISDataSelect>
           </v-card-text>
