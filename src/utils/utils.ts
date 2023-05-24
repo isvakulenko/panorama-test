@@ -1,3 +1,4 @@
+/* eslint-disable */
 export class Utils {
   //вычисление площади
   static calculateArea(bbox: number[]): string {
