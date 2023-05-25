@@ -4,9 +4,9 @@
     <v-row class="text-center">
       <v-form ref="form">
         <h2 class="headline font-weight-bold mb-3">Заголовок</h2>
-        <v-text-field v-model="id" label="id"></v-text-field>
-        <v-text-field v-model="layer" label="Layer"></v-text-field>
-        <v-text-field v-model="name" label="Name"></v-text-field>
+        <v-text-field v-model="id" disabled label="id"></v-text-field>
+        <v-text-field v-model="layer" disabled label="Layer"></v-text-field>
+        <v-text-field v-model="name" disabled label="Name"></v-text-field>
         <v-text-field v-model="area" disabled label="Area"></v-text-field>
       </v-form>
     </v-row>
@@ -45,13 +45,22 @@ export default Vue.extend({
     },
   },
   created() {
-    this.name = this.feature.properties.name;
-    this.layer = this.feature.properties.layer;
-    this.id = this.feature.properties.id;
-    this.semantics = this.feature.properties.semantics;
-    this.isChanged = false;
+    this.updateFormData();
+  },
+  //при смене содержимого в блоке смене обновятся данные в форме
+  watch: {
+    feature: function () {
+      this.updateFormData();
+    },
   },
   methods: {
+    updateFormData() {
+      this.name = this.feature.properties.name;
+      this.layer = this.feature.properties.layer;
+      this.id = this.feature.properties.id;
+      this.semantics = this.feature.properties.semantics;
+      this.isChanged = false;
+    },
     save() {
       this.isChanged = false;
       // https://monsterlessons.com/project/lessons/peredaem-dannye-iz-child-v-parent-v-vue
