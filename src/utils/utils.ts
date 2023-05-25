@@ -14,9 +14,7 @@ export class Utils {
   }
 
   //получение случайного значения задержки в интервале 7-10 секунд.
-  static getRandomDelay(): Promise<null> {
-    const delay = this.getRandomNumber()
-    //console.log (delay) 
+  static getRandomDelay(delay:number): Promise<null> {
     return  new Promise((resolve) => {
       setTimeout(() => {
         resolve(null);

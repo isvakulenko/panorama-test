@@ -85,10 +85,18 @@ export default Vue.extend({
     async getGeoJSON() {
       this.isLoading = true;
       this.progress = 0;
-      //сделаем задержку выполнения
-      await Utils.getRandomDelay();
-      this.progress = 100;
-      Utils.getDataApi(baseUrl).then((response: any) => {
+      //для визуализации progress-linear
+      // количество шагов
+      const steps = 10; 
+      const delay = await Utils.getRandomNumber();
+      // задержка на каждый шаг
+      const stepDelay = delay / steps; 
+      for (let i = 0; i < steps; i++) {
+        await Utils.getRandomDelay(stepDelay);
+        // изменение значения progress на каждом шаге
+        this.progress = (i + 1) * (100 / steps); 
+      }
+       Utils.getDataApi(baseUrl).then((response: any) => {
         this.features = response.features;
         this.area = Utils.calculateArea(response.bbox);
         this.isLoading = false;
@@ -98,7 +106,8 @@ export default Vue.extend({
       this.isSaving = true;
       this.startTime = Date.now();
       //сделаем задержку выполнения
-      await Utils.getRandomDelay()
+      const delay = await Utils.getRandomNumber();
+       await Utils.getRandomDelay(delay )
       this.isSaving = false;
       this.isSaved = true;
       this.elapsedTime = Date.now() - this.startTime;
