@@ -1,8 +1,8 @@
 /* eslint-disable */
 import {Component, Vue} from "vue-property-decorator";
-import GISGetData from "./components/GISGetData.vue";
+import GisGetData from "./components/GisGetData/GisGetData.vue";
 
 
-@Component({components: {GISGetData}})
+@Component({components: {GisGetData}})
 export default class App extends Vue {
 }
