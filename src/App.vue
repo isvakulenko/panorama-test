@@ -7,7 +7,7 @@
       </v-row>
     </v-app-bar>
     <v-main>
-<GISGetData/>
+<GisGetData/>
     </v-main>
   </v-app>
 </template>
